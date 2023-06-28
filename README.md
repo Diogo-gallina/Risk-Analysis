@@ -5,8 +5,6 @@
 
 - [ ] Um cliente deve poder enviar seus dados para serem analisados
 
-- [ ] O cliente depois enviar seus dados, deve poder ver se ele foi aprovado ou reprovado
-
 - [ ] O administrador deve poder ver todas os requisitos dos clientes já com o resultado do seu nivel de confiabilidade
 
 - [ ] O administrador pode ver os dados de um cliente específico
@@ -16,6 +14,8 @@
 #### Pontuação para definir rank:
 - Se o cliente tiver algum histórico criminal, ele deve ser Reprovado, caso não tenha ele não recebe nada de pontuação
 - se o nível de endividamento do cliente 
+- o lucro deve ser definido pela receita anual - despesa anual
+- 
 
 [ ] Modelo criminal - 0 || REPROVADO;
 [ ] Nível de endividamento (>10%FA = REPROVA| 9%FA-6% - ruim = 5 | 5%-1% - bom = 15 | 0% muito bom = 20)  - 20

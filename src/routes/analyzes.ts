@@ -11,5 +11,9 @@ export async function analyzesRoutes(app: FastifyInstance){
         return { analyzes }
     })
 
-
+    app.post('/', async(request, reply) => {
+        const createClientAnalyze = z.object({
+            
+        })
+    })
 }
