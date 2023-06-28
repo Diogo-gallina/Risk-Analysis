@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx --watch ./src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "knex": "npx --loader ts-node ./node_modules/.bin/knex "
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "typescript": "^5.1.5"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "fastify": "^4.18.0",
     "knex": "^2.4.2",
     "sqlite3": "^5.1.6",
