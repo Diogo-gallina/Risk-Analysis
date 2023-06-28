@@ -5,4 +5,11 @@ import { FastifyInstance } from "fastify";
 
 export async function analyzesRoutes(app: FastifyInstance){
 
+    app.get('/', async() => {
+        const analyzes = await knex('analyzes').select()
+
+        return { analyzes }
+    })
+
+
 }
