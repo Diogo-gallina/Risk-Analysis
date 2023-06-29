@@ -5,6 +5,7 @@ import { FastifyInstance } from "fastify";
 import { FinancialResultValidate } from "../utils/FinancialResultValidate";
 import { SerasaScoreValidate } from "../utils/SerasaScoreValidate";
 import { DebtLevelValidate } from "../utils/DebtLevelValidate";
+import { TimeOfExistenceValidate } from "../utils/TimeOfExistenceValidate";
 
 export async function analyzesRoutes(app: FastifyInstance){
 
@@ -57,6 +58,9 @@ export async function analyzesRoutes(app: FastifyInstance){
           annual_expense,
           annual_recipe,
         } = createClientAnalyze.parse(request.body);
+
+        const scoreTimeExistence = TimeOfExistenceValidate
+            .calculateDateOfExistence(time_of_existence)
 
         const scoreDebtLevel = DebtLevelValidate
             .scoreDebtLevelCalculate(debt_level, annual_recipe);         
