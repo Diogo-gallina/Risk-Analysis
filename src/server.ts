@@ -5,7 +5,7 @@ import { analyzesRoutes } from "./routes/analyzes";
 const app = fastify();
 
 app.register(analyzesRoutes, {
-    prefix: 'analizes'
+    prefix: 'analyzes'
 });
 
 app.listen({

@@ -12,8 +12,6 @@ export async function up(knex: Knex): Promise<void> {
         table.text('late_payment_history').notNullable()
         table.decimal('serasa_score').notNullable()
         table.decimal('time_of_existence').notNullable()
-        table.decimal('annual_expense').notNullable()
-        table.decimal('annual_recipe').notNullable()
         table.text('financial_result').notNullable()
         table.text('rank').notNullable()
         table.text('status').notNullable()
