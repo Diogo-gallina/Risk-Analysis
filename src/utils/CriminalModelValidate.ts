@@ -1,14 +1,5 @@
-export class CriminalModelValidaTe{
-
-        constructor(
-            private criminalStatus: string
-        ){
-            this.criminalStatus = criminalStatus
-        }
-
-    CriminalModelValidaTe(criminalStatus: string): string {
-        const s = "a"
-
-        return s;
+export class CriminalModelValidate{
+    public static criminalModelValidaTe(criminalStatus: string): number {
+        return criminalStatus === "no" ? 0 : -1; 
     }
 }

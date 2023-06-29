@@ -3,7 +3,7 @@ export class AnnualRecipeValidade{
         let scoreAnnualRecipe = 0;
 
         if (annualRecipe < 300000) {
-            scoreAnnualRecipe = 0;
+            scoreAnnualRecipe = -1;
         }else if (annualRecipe > 300000 && annualRecipe <= 4800000) {
             scoreAnnualRecipe = 5;
         }else if (annualRecipe > 4800000 && annualRecipe <= 12000000) {

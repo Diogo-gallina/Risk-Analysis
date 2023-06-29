@@ -3,7 +3,7 @@ export class SerasaScoreValidate{
         let scoreSerasa = 0;
 
         if (score < 300) {
-            scoreSerasa = 0;
+            scoreSerasa = -1;
         }else if (score > 300 && score <= 500) {
             scoreSerasa = 5;
         }else if (score > 500 && score <= 700) {

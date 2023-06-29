@@ -6,6 +6,8 @@ import { FinancialResultValidate } from "../utils/FinancialResultValidate";
 import { SerasaScoreValidate } from "../utils/SerasaScoreValidate";
 import { DebtLevelValidate } from "../utils/DebtLevelValidate";
 import { TimeOfExistenceValidate } from "../utils/TimeOfExistenceValidate";
+import { CriminalModelValidate } from "../utils/CriminalModelValidate";
+import { LatePaymentHistoryValidate } from "../utils/LatePaymentHistoryValidate";
 
 export async function analyzesRoutes(app: FastifyInstance){
 
@@ -28,6 +30,8 @@ export async function analyzesRoutes(app: FastifyInstance){
         
         return { analizes }
     })
+
+    
 
     app.post('/', async (request, reply) => {
         const createClientAnalyze = z.object({
@@ -59,8 +63,14 @@ export async function analyzesRoutes(app: FastifyInstance){
           annual_recipe,
         } = createClientAnalyze.parse(request.body);
 
+        const scoreCriminalAntecedent = CriminalModelValidate
+            .criminalModelValidaTe(criminal_antecedent);
+
+        const scoreLatePayment = LatePaymentHistoryValidate
+            .latePaymentHistoryValidate(late_payment_history);
+
         const scoreTimeExistence = TimeOfExistenceValidate
-            .calculateDateOfExistence(time_of_existence)
+            .calculateDateOfExistence(time_of_existence);
 
         const scoreDebtLevel = DebtLevelValidate
             .scoreDebtLevelCalculate(debt_level, annual_recipe);         
@@ -72,6 +82,8 @@ export async function analyzesRoutes(app: FastifyInstance){
             .calculateFinancialResult(annual_recipe, annual_expense);
         const scoreFinancial = FinancialResultValidate.
             totalScoreFinancialCalculate(financialResult);
+
+        const finalScore = Final
         
       
         await knex('clients').insert({
