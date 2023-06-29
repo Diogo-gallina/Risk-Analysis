@@ -8,6 +8,9 @@ import { DebtLevelValidate } from "../utils/DebtLevelValidate";
 import { TimeOfExistenceValidate } from "../utils/TimeOfExistenceValidate";
 import { CriminalModelValidate } from "../utils/CriminalModelValidate";
 import { LatePaymentHistoryValidate } from "../utils/LatePaymentHistoryValidate";
+import { FinalScore } from "../utils/FinalScore";
+import { FinalRank } from "../utils/FinalRank";
+import { SetStatus } from "../utils/SetStatus";
 
 export async function analyzesRoutes(app: FastifyInstance){
 
@@ -31,7 +34,31 @@ export async function analyzesRoutes(app: FastifyInstance){
         return { analizes }
     })
 
-    
+    // app.get("status", async(request) => {
+    //     const getCliensParamsSchema = z.object({
+    //       status: z.enum(['APPROVED', 'DISAPPROVED']),
+    //     });
+
+    //     const { status } = getCliensParamsSchema.parse(request.params);
+
+    //     const analyzes = await knex('clients').where('status', status)
+
+    //     return { analyzes }
+    // })
+
+    // app.get('/:rank', async(request) => {
+    //     const getCliensParamsSchema = z.object({
+    //         rank: z.string()
+    //     });
+
+    //     const { rank } = getCliensParamsSchema.parse(request.params);
+
+    //     const analizes = await knex('clients')
+    //         .where('rank', rank)
+            
+        
+    //     return { analizes }
+    // })
 
     app.post('/', async (request, reply) => {
         const createClientAnalyze = z.object({
@@ -45,9 +72,9 @@ export async function analyzesRoutes(app: FastifyInstance){
             time_of_existence: z.number(),
             annual_expense: z.number(),
             annual_recipe: z.number(),
-            financial_result: z.enum(['profit', 'prejudice']),
-            rank: z.enum(['S', 'A', 'B', 'C', 'D']),
-            status: z.enum(['APPROVED', 'DISAPPROVED']),
+            financial_result: z.enum(['profit', 'prejudice']).default('prejudice'),
+            rank: z.enum(['S', 'A', 'B', 'C', 'D']).default("D"),
+            status: z.enum(['APPROVED', 'DISAPPROVED']).default('DISAPPROVED'),
         });
         
         const {
@@ -63,7 +90,9 @@ export async function analyzesRoutes(app: FastifyInstance){
           annual_recipe,
         } = createClientAnalyze.parse(request.body);
 
-        const scoreCriminalAntecedent = CriminalModelValidate
+        
+        
+        const scoreCriminalModel = CriminalModelValidate
             .criminalModelValidaTe(criminal_antecedent);
 
         const scoreLatePayment = LatePaymentHistoryValidate
@@ -80,10 +109,27 @@ export async function analyzesRoutes(app: FastifyInstance){
 
         const financialResult = FinancialResultValidate
             .calculateFinancialResult(annual_recipe, annual_expense);
-        const scoreFinancial = FinancialResultValidate.
-            totalScoreFinancialCalculate(financialResult);
 
-        const finalScore = Final
+        const scoreFinacial = FinancialResultValidate
+            .totalScoreFinancialCalculate(financialResult);
+
+        const ScorePoints = [
+          scoreCriminalModel,
+          scoreLatePayment,
+          scoreTimeExistence,
+          scoreDebtLevel,
+          serasaScore,
+          scoreFinacial,
+          annual_expense,
+          annual_recipe
+        ];
+
+      
+        const finalScore = FinalScore.calculateTotalScore(ScorePoints);
+
+        const setRank = FinalRank.selectingRankByScore(finalScore);
+        
+        const setStatus = SetStatus.setStatusByScore(finalScore);
         
       
         await knex('clients').insert({
@@ -96,8 +142,8 @@ export async function analyzesRoutes(app: FastifyInstance){
           late_payment_history,
           serasa_score,
           time_of_existence,
-          rank: 'S',
-          status: 'APPROVED',
+          rank: setRank,
+          status: setStatus,
           financial_result: financialResult,
         });
       
@@ -119,4 +165,5 @@ export async function analyzesRoutes(app: FastifyInstance){
         
         return reply.status(201).send();
     })
+
 }
