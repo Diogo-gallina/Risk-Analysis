@@ -1,17 +1,21 @@
-export class SerasaScoreValidate{
-    public static calculateSerasaScore(score: number): number{
-        let scoreSerasa = 0;
+export class SerasaScoreValidate {
+  public static calculateSerasaScore(score: number): number {
+    const scoreMap = [
+      { limit: 300, score: -1 },
+      { limit: 500, score: 5 },
+      { limit: 700, score: 15 },
+      { limit: 1000, score: 25 },
+    ];
 
-        if (score < 300) {
-            scoreSerasa = -1;
-        }else if (score > 300 && score <= 500) {
-            scoreSerasa = 5;
-        }else if (score > 500 && score <= 700) {
-            scoreSerasa = 15;
-        }else if (score > 700 && score <= 1000) {
-            scoreSerasa = 25;
-        }
+    let scoreSerasa = 0;
 
-        return scoreSerasa;
+    for (const { limit, score: currentScore } of scoreMap) {
+      if (score <= limit) {
+        scoreSerasa = currentScore;
+        break;
+      }
     }
+
+    return scoreSerasa;
+  }
 }
