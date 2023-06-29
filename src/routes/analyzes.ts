@@ -4,6 +4,7 @@ import { randomUUID } from "crypto";
 import { FastifyInstance } from "fastify";
 import { FinancialResultValidate } from "../utils/FinancialResultValidate";
 import { SerasaScoreValidate } from "../utils/SerasaScoreValidate";
+import { DebtLevelValidate } from "../utils/DebtLevelValidate";
 
 export async function analyzesRoutes(app: FastifyInstance){
 
@@ -57,9 +58,11 @@ export async function analyzesRoutes(app: FastifyInstance){
           annual_recipe,
         } = createClientAnalyze.parse(request.body);
 
-        
+        const scoreDebtLevel = DebtLevelValidate
+            .scoreDebtLevelCalculate(debt_level, annual_recipe);         
 
-        const serasaScore = SerasaScoreValidate.calculateSerasaScore(serasa_score);
+        const serasaScore = SerasaScoreValidate
+            .calculateSerasaScore(serasa_score);
 
         const financialResult = FinancialResultValidate
             .calculateFinancialResult(annual_recipe, annual_expense);

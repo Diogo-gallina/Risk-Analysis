@@ -1,5 +1,4 @@
 export class FinancialResultValidate {
-
     public static calculateFinancialResult(
         annualRecipe: number,
         annualExpense: number

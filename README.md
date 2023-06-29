@@ -19,7 +19,7 @@
 
 [ ] Modelo criminal - 0 || REPROVADO;
 
-[ ] Nível de endividamento (>10%FA = REPROVA| 9%FA-6% - ruim = 5 | 5%-1% - bom = 15 | 0% muito bom = 20)  - 20
+[x] Nível de endividamento (>10%FA = REPROVA| 9%FA-6% - ruim = 5 | 5%-1% - bom = 15 | 0% muito bom = 20)  - 20
 
 [ ] Histórico de inadimplência - 0  || REPROVADO
 
