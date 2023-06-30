@@ -18,7 +18,7 @@ export class AnnualRecipeValidade {
 
     return scoreAnnualRecipe;
   }
+
+ 
 }
-
-
 
