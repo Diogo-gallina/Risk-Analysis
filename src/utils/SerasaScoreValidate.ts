@@ -1,6 +1,8 @@
 export class SerasaScoreValidate {
   public static calculateSerasaScore(score: number): number {
     const scoreMap = [
+      { limit: -Infinity, score: 0 },
+      { limit: 0, score: 0 },
       { limit: 300, score: -1 },
       { limit: 500, score: 5 },
       { limit: 700, score: 15 },
