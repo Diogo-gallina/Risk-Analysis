@@ -1,23 +1,15 @@
 export class AnnualRecipeValidate {
   public static calculateSerasaScore(annualRecipe: number): number {
-    if (annualRecipe < 300000) {
-      return -1;
-    }
-
-    const scoreMap = [
-      { limit: 300000, score: 5 },
-      { limit: 4800000, score: 15 },
-      { limit: 12000000, score: 25 },
-    ];
-
     let scoreAnnualRecipe = 0;
 
-    for (const { limit, score } of scoreMap) {
-      if (annualRecipe > limit) {
-        scoreAnnualRecipe = score;
-      } else {
-        break;
-      }
+    if(annualRecipe < 300000){
+      scoreAnnualRecipe = -1
+    } else if (annualRecipe > 12000000) {
+      scoreAnnualRecipe = 25;
+    } else if (annualRecipe > 4800000) {
+      scoreAnnualRecipe = 15;
+    } else if (annualRecipe > 300000) {
+      scoreAnnualRecipe = 5;
     }
 
     return scoreAnnualRecipe;

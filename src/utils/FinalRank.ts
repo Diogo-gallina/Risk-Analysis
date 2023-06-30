@@ -1,18 +1,15 @@
 export class FinalRank {
-    private static scoreRanges = [
-      { score: 20, rank: 'D' },
-      { score: 40, rank: 'C' },
-      { score: 60, rank: 'B' },
-      { score: 80, rank: 'A' },
-    ];
-  
-    public static selectingRankByScore(finalScore: number): string {
-      for (const { score, rank } of FinalRank.scoreRanges) {
-        if (finalScore < score) {
-          return rank;
-        }
-      }
-  
+  public static selectingRankByScore(finalScore: number): string {
+    if (finalScore > 80) {
       return 'S';
+    } else if (finalScore > 60) {
+      return 'A';
+    } else if (finalScore > 40) {
+      return 'B';
+    } else if (finalScore > 20) {
+      return 'C';
+    } else {
+      return 'D';
     }
+  }
 }

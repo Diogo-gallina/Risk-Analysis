@@ -120,8 +120,6 @@ export async function analyzesRoutes(app: FastifyInstance){
           scoreDebtLevel,
           serasaScore,
           scoreFinacial,
-          annual_expense,
-          annual_recipe
         ];
 
       
