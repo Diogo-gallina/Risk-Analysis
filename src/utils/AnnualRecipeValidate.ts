@@ -1,5 +1,9 @@
-export class AnnualRecipeValidade {
+export class AnnualRecipeValidate {
   public static calculateSerasaScore(annualRecipe: number): number {
+    if (annualRecipe < 300000) {
+      return -1;
+    }
+
     const scoreMap = [
       { limit: 300000, score: 5 },
       { limit: 4800000, score: 15 },
@@ -18,7 +22,4 @@ export class AnnualRecipeValidade {
 
     return scoreAnnualRecipe;
   }
-
- 
 }
-
