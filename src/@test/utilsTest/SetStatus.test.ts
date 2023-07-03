@@ -6,6 +6,12 @@ test('Must set status correctly based on final score provided', () => {
     expect(score).toBe('DISAPPROVED');
 });
 
+test('Must set status correctly based on final score provided', () => {
+    const finalScore = 38;
+    const score = SetStatus.setStatusByScore(finalScore);
+    expect(score).toBe('DISAPPROVED');
+});
+
 
 test('Must set status correctly based on final score provided', () => {
     const finalScore = 85;
