@@ -11,6 +11,7 @@ import { LatePaymentHistoryValidate } from "../utils/LatePaymentHistoryValidate"
 import { FinalScore } from "../utils/FinalScore";
 import { FinalRank } from "../utils/FinalRank";
 import { SetStatus } from "../utils/SetStatus";
+import { AnnualRecipeValidate } from "../utils/AnnualRecipeValidate";
 
 export async function analyzesRoutes(app: FastifyInstance){
 
@@ -90,7 +91,8 @@ export async function analyzesRoutes(app: FastifyInstance){
           annual_recipe,
         } = createClientAnalyze.parse(request.body);
 
-        
+        const scoreAnnualRecipe = AnnualRecipeValidate
+            .calculateAnnualRecipeScore(annual_recipe);
         
         const scoreCriminalModel = CriminalModelValidate
             .criminalModelValidaTe(criminal_antecedent);
@@ -118,10 +120,10 @@ export async function analyzesRoutes(app: FastifyInstance){
           scoreLatePayment,
           scoreTimeExistence,
           scoreDebtLevel,
-          serasaScore,
           scoreFinacial,
+          serasaScore,
+          scoreAnnualRecipe
         ];
-
       
         const finalScore = FinalScore.calculateTotalScore(ScorePoints);
 

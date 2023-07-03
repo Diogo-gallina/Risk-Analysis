@@ -29,5 +29,5 @@
 
 [x] Faturamento anual (<300mil - micro = REPROVADO | >301mil - 4.8m - pequena = 10 | >4.8m - <12m - média = 20 | >12m grande Porte= 25) - 25
 
-[x] Resultado financeiro (lucro = 15 ou prejuízo = 0) - 15
+[x] Resultado financeiro (lucro = 15 ou prejuízo = 0) - 15 
 

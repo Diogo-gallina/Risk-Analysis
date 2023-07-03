@@ -1,5 +1,5 @@
 export class AnnualRecipeValidate {
-  public static calculateSerasaScore(annualRecipe: number): number {
+  public static calculateAnnualRecipeScore(annualRecipe: number): number {
     let scoreAnnualRecipe = 0;
 
     if(annualRecipe < 300000){
