@@ -1,33 +1,64 @@
 # Risk-Analysis
-⚠️software designed to simulate risk analysis based on customer data, defining whether or not a customer is eligible for advances on receivables.
-
-### Requisitos Funcionais
-
-- [ ] Um cliente deve poder enviar seus dados para serem analisados
-
-- [ ] O administrador deve poder ver todas os requisitos dos clientes já com o resultado do seu nivel de confiabilidade
-
-- [ ] O administrador pode ver os dados de um cliente específico
-
-### Regras de Negócio
-
-#### Pontuação para definir rank:
-- Se o cliente tiver algum histórico criminal, ele deve ser Reprovado, caso não tenha ele não recebe nada de pontuação
-- se o nível de endividamento do cliente 
-- o lucro deve ser definido pela receita anual - despesa anual
+⚠️ Software designed to simulate risk analysis based on customer data, determining whether a customer is eligible for advances on receivables
 
 
-[x] Modelo criminal - 0 || REPROVADO;
+### Functional Requirements
 
-[x] Nível de endividamento (>10%FA = REPROVA| 9%FA-6% - ruim = 5 | 5%-1% - bom = 15 | 0% muito bom = 20)  - 20
+- A customer should be able to submit their data for analysis.
 
-[x] Histórico de inadimplência - 0  || REPROVADO
+- The administrator should be able to view all customer requirements along with the result of their reliability level.
 
-[x] Score do serasa (<300 = REPROVA| 301-500 - ruim = 5 | 501-700 -  bom = 15 | >700-1000 - muito bom = 25) - 25
+- The administrator can view the data of a specific customer.
 
-[x] Tempo de existência (<2 ruim = 3| 3-5 - medio = 5 | 6-9 - bom = 10 | >10 muito bom = 15) - 15
+### Business Rules
 
-[x] Faturamento anual (<300mil - micro = REPROVADO | >301mil - 4.8m - pequena = 10 | >4.8m - <12m - média = 20 | >12m grande Porte= 25) - 25
+- If the customer has any criminal history, they should be Disapproved; otherwise, they receive no scoring.
+- Debt level of the customer:
+  - If it's greater than 10% of the annual revenue, it's Disapproved.
+  - If it's between 9% and 6% of the annual revenue, it's considered Poor (score: 5).
+  - If it's between 5% and 1% of the annual revenue, it's considered Good (score: 15).
+  - If it's 0% of the annual revenue, it's considered Very Good (score: 20).
+- Default history score: 0 || Disapproved.
+- Serasa score:
+  - If it's less than 300, it's Disapproved.
+  - If it's between 301 and 500, it's considered Poor (score: 5).
+  - If it's between 501 and 700, it's considered Good (score: 15).
+  - If it's between 701 and 1000, it's considered Very Good (score: 25).
+- Existence time:
+  - If it's less than 2 years, it's considered Poor (score: 3).
+  - If it's between 3 and 5 years, it's considered Average (score: 5).
+  - If it's between 6 and 9 years, it's considered Good (score: 10).
+  - If it's greater than 10 years, it's considered Very Good (score: 15).
+- Annual revenue:
+  - If it's less than $ 300,000, it's considered Micro (Disapproved).
+  - If it's between $ 300,001 and $ 4.8 million, it's considered Small (score: 10).
+  - If it's between $ 4.8 million and $12 million, it's considered Medium (score: 20).
+  - If it's greater than $ 12 million, it's considered Large (score: 25).
+- Financial result:
+  - If it's profit, the score is 15.
+  - If it's a loss, the score is 0.
 
-[x] Resultado financeiro (lucro = 15 ou prejuízo = 0) - 15 
+## Development
 
+To run the code in development mode, you need to have the following technologies installed:
+
+- Node.js
+- TypeScript
+- Fastify
+- Knex
+- Sqlite
+- Zod
+
+### Follow these steps:
+
+- Clone the repository.
+- Install the dependencies using npm install.
+- Run the TypeScript compiler in watch mode using npm run dev.
+- And the server will already be running
+- Use some tool to make requests and visualize them like postman and insomnia
+
+
+## 🤝 Contributors
+We want to thank the following people who contributed to this project:
+
+Diogo-gallina: https://github.com/Diogo-gallina
