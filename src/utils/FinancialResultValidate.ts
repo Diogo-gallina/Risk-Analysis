@@ -2,17 +2,17 @@ export class FinancialResultValidate {
     public static calculateFinancialResult(
         annualRecipe: number,
         annualExpense: number
-    ): 'profit' | 'prejudice' {
+    ): 'PROFIT' | 'PREJUDICE' {
         if (annualRecipe > annualExpense) {
-        return 'profit';
+        return 'PROFIT';
         } else {
-        return 'prejudice';
+        return 'PREJUDICE';
         }
     }
 
     public static totalScoreFinancialCalculate(
         choiceFinancial: string
     ){
-        return choiceFinancial === 'profit' ? 15 : 0; 
+        return choiceFinancial === 'PROFIT' ? 15 : 0; 
     }
 }

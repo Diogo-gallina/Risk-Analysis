@@ -39,16 +39,16 @@ export async function analyzesRoutes(app: FastifyInstance){
     app.post('/', async (request, reply) => {
         const createClientAnalyze = z.object({
             company_name: z.string(),
-            business_email: z.string(),
+            business_email: z.string().email(),
             cnpj: z.string(),
             criminal_antecedent: z.enum(['yes', 'no']),
-            debt_level: z.number(),
+            debt_level: z.number().nonnegative(),
             late_payment_history: z.enum(['yes', 'no']),
-            serasa_score: z.number(),
-            time_of_existence: z.number(),
+            serasa_score: z.number().nonnegative(),
+            time_of_existence: z.number().nonnegative(),
             annual_expense: z.number(),
             annual_recipe: z.number(),
-            financial_result: z.enum(['profit', 'prejudice']).default('prejudice'),
+            financial_result: z.enum(['PROFIT', 'PREJUDICE']).default('PREJUDICE'),
             rank: z.enum(['S', 'A', 'B', 'C', 'D']).default("D"),
             status: z.enum(['APPROVED', 'DISAPPROVED']).default('DISAPPROVED'),
         });
