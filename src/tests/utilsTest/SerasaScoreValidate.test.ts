@@ -1,6 +1,7 @@
 import { SerasaScoreValidate } from '../../utils/SerasaScoreValidate';
 
-describe('SerasaScoreValidate', () => {
+describe('Serasa score validate', () => {
+
   test('should return -1 for a score below 300', () => {
     const score = 250;
     const result = SerasaScoreValidate.calculateSerasaScore(score);
@@ -36,4 +37,5 @@ describe('SerasaScoreValidate', () => {
     const result = SerasaScoreValidate.calculateSerasaScore(score);
     expect(result).toBe(-1);
   });
+
 });
