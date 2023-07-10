@@ -1,14 +1,18 @@
 import { CriminalModelValidate } from "../../utils/CriminalModelValidate";
 
-test('Should return correct code based on provided criminal status', () => {
-    const criminalStatus = "no";
-    const score = CriminalModelValidate.criminalModelValidaTe(criminalStatus);
-    expect(score).toBe(0);
-});
+describe('Criminal model validate ', () => {
+
+    test('Should return correct code based on provided criminal status', () => {
+        const criminalStatus = "no";
+        const score = CriminalModelValidate.criminalModelValidaTe(criminalStatus);
+        expect(score).toBe(0);
+    });
 
 
-test('Should return correct code based on provided criminal status', () => {
-    const criminalStatus = "yes";
-    const score = CriminalModelValidate.criminalModelValidaTe(criminalStatus);
-    expect(score).toBe(-1);
+    test('Should return correct code based on provided criminal status', () => {
+        const criminalStatus = "yes";
+        const score = CriminalModelValidate.criminalModelValidaTe(criminalStatus);
+        expect(score).toBe(-1);
+    });
+
 });
