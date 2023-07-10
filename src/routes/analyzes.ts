@@ -36,32 +36,6 @@ export async function analyzesRoutes(app: FastifyInstance){
         return { analizes }
     })
 
-    // app.get("status", async(request) => {
-    //     const getCliensParamsSchema = z.object({
-    //       status: z.enum(['APPROVED', 'DISAPPROVED']),
-    //     });
-
-    //     const { status } = getCliensParamsSchema.parse(request.params);
-
-    //     const analyzes = await knex('clients').where('status', status)
-
-    //     return { analyzes }
-    // })
-
-    // app.get('/:rank', async(request) => {
-    //     const getCliensParamsSchema = z.object({
-    //         rank: z.string()
-    //     });
-
-    //     const { rank } = getCliensParamsSchema.parse(request.params);
-
-    //     const analizes = await knex('clients')
-    //         .where('rank', rank)
-            
-        
-    //     return { analizes }
-    // })
-
     app.post('/', async (request, reply) => {
         const createClientAnalyze = z.object({
             company_name: z.string(),
