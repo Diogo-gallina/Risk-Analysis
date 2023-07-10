@@ -1,4 +1,5 @@
 import fastify from "fastify";
+
 import { env } from "./env";
 import { analyzesRoutes } from "./routes/analyzes";
 

@@ -1,4 +1,5 @@
 import { knex as setupKnex, Knex } from 'knex';
+
 import { env } from './env/index';
 
 if(!process.env.DATABASE_URL){

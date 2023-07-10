@@ -1,7 +1,8 @@
-import { knex } from "../database";
-import { z } from "zod";
-import { randomUUID } from "crypto";
 import { FastifyInstance } from "fastify";
+import { z } from "zod";
+import { randomUUID } from "node:crypto";
+
+import { knex } from "../database";
 import { FinancialResultValidate } from "../utils/FinancialResultValidate";
 import { SerasaScoreValidate } from "../utils/SerasaScoreValidate";
 import { DebtLevelValidate } from "../utils/DebtLevelValidate";
