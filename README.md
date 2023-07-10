@@ -1,6 +1,6 @@
 # Risk-Analysis
-⚠️ Software designed to simulate risk analysis based on customer data, determining whether a customer is eligible for advances on receivables
 
+⚠️ Software designed to simulate risk analysis based on customer data, determining whether a customer is eligible for advances on receivables
 
 ### Functional Requirements
 
@@ -57,8 +57,8 @@ To run the code in development mode, you need to have the following technologies
 - And the server will already be running
 - Use some tool to make requests and visualize them like postman and insomnia
 
-
 ## 🤝 Contributors
+
 We want to thank the following people who contributed to this project:
 
 Diogo-gallina: https://github.com/Diogo-gallina

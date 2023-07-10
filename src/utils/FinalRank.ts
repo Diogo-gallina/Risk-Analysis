@@ -1,15 +1,15 @@
 export class FinalRank {
   public static selectingRankByScore(finalScore: number): string {
     if (finalScore > 80) {
-      return 'S';
+      return "S";
     } else if (finalScore > 60) {
-      return 'A';
+      return "A";
     } else if (finalScore > 40) {
-      return 'B';
+      return "B";
     } else if (finalScore > 20) {
-      return 'C';
+      return "C";
     } else {
-      return 'D';
+      return "D";
     }
   }
 }

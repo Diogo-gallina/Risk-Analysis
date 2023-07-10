@@ -6,11 +6,13 @@ import { analyzesRoutes } from "./routes/analyzes";
 const app = fastify();
 
 app.register(analyzesRoutes, {
-    prefix: 'analyzes'
+  prefix: "analyzes",
 });
 
-app.listen({
-    port: env.PORT
-}).then(() => {
-    console.log('HTTP Server Running!');
-})
+app
+  .listen({
+    port: env.PORT,
+  })
+  .then(() => {
+    console.log("HTTP Server Running!");
+  });
