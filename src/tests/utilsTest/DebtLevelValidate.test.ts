@@ -1,6 +1,7 @@
 import { DebtLevelValidate } from '../../utils/DebtLevelValidate';
 
-describe('DebtLevelValidate', () => {
+describe('Debt level validate', () => {
+
   test('scoreDebtLevelCalculate should return a score of -1 when the debt level is greater than 10% of annual recipe', () => {
     const debtLevel = 6000;
     const annualRecipe = 50000;
@@ -28,4 +29,5 @@ describe('DebtLevelValidate', () => {
     const result = DebtLevelValidate.scoreDebtLevelCalculate(debtLevel, annualRecipe);
     expect(result).toBe(20);
   });
+  
 });
